@@ -4,7 +4,8 @@ import { Button, MovieTile } from "../components";
 import { useMovieData } from "../hooks";
 
 export const getStaticProps = async () => {
-  const res = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=97ecd2c6aa765b0bd30e0f2b67c63e5b`);
+  const apiKey = '97ecd2c6aa765b0bd30e0f2b67c63e5b'
+  const res = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`);
   const { data } = await res;
   return { props: { data }}
 }
