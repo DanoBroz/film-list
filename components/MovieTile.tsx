@@ -1,3 +1,4 @@
+import Image, { ImageLoader } from "next/image"
 import '../styles/Home.module.css'
 
 //#region Types
@@ -19,9 +20,20 @@ export const MovieTile = (props: MovieProps) => {
         overview,
     } = props
 
+    const imageLoader = ({ src }) => {
+        return `https://image.tmdb.org/t/p/original${src}`
+    }
+
     return (
         <div key={id} className="movie-tile bg-white border border-gray-500 rounded grid gap-1 overflow-hidden">
-            <img src={`https://image.tmdb.org/t/p/original${imageSrc}`} />
+            <Image
+                loader={imageLoader}
+                src={imageSrc}
+                alt={`image-${id}`}
+                width={150}
+                height={200}
+                layout="responsive"
+            />
             <div className="p-2 md:p-4 flex flex-col">
                 <span className="movie-tile__title text-lg text-gray-800 font-semibold transition-colors">{title}</span>
                 <span className="mb-3 md:mb-5">score: {score}</span>
