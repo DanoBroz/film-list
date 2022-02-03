@@ -1,4 +1,4 @@
-import Image, { ImageLoader } from "next/image"
+import Image, { ImageLoaderProps } from "next/image"
 import '../styles/Home.module.css'
 
 //#region Types
@@ -20,7 +20,7 @@ export const MovieTile = (props: MovieProps) => {
         overview,
     } = props
 
-    const imageLoader = ({ src }) => {
+    const imageLoader = ({ src }: ImageLoaderProps) => {
         return `https://image.tmdb.org/t/p/original${src}`
     }
 
